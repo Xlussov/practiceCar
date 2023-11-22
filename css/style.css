@@ -1,0 +1,54 @@
+table {
+   border-collapse: collapse;
+   border: 1px solid black;
+   margin-bottom: 20px;
+}
+
+td,tr {
+   border: 1px solid black;
+   padding: 5px 10px;
+   color: black;
+   background-color: #fcfcfc;
+}
+
+.addCar, .delCar, .cngStatus {
+   display: none;
+   flex-direction: column;
+   width: 200px;
+   border: 1px solid black;
+   border-top: none;
+   padding: 5px 0px;
+   
+}
+
+
+
+.burger1 p, .burger2 p, .burger3 p{
+   width: 196px;
+   border: 1px solid black;
+   height: 20px;
+   margin: 0px;
+   padding: 2px;
+
+}
+input {
+   margin: 5px;
+}
+
+.addNewCar, .delTheCar, .cngTheStatus {
+   margin: 0 auto;
+   width: 190px;
+}
+
+.flex {
+   display: flex;
+}
+
+
+.block1, .block2, .block3{
+   margin-right: 20px;
+}
+
+.wraper {
+   display: flex;
+}

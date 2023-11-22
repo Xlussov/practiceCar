@@ -54,7 +54,8 @@ function toLog(obj) {
          const ent = Object.values(entries[r])
          const newTd = document.createElement('td')
          newTr.append(newTd)
-         newTd.textContent = `${ent[0]} : ${ent[1]}`
+         // newTd.textContent = `${ent[0]} : ${ent[1]}`
+         newTd.textContent = ent[0] === 'status' ? ent[1] === true || ent[1] === 'true' ? `${ent[0]} : У гаражі` : `${ent[0]} : Десь поїхала` : ent[1] === null || ent[1] == '' || ent[1] == ' '  ? `${ent[0]} : Немає значення` : `${ent[0]} : ${ent[1]}`
          // console.log(`${ent[0]} : ${ent[1]}`);
       }
    }

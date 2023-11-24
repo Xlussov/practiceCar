@@ -9,18 +9,29 @@ const runCar = document.querySelector('.nameCar')
 const addNewCar = document.querySelector('.addNewCar')
 const delTheCar = document.querySelector('.delTheCar')
 const cngTheStatus = document.querySelector('.cngTheStatus')
+const searchTheCar = document.querySelector('.searchTheCar')
+const cngTheRun = document.querySelector('.cngTheRun')
 
 
 const addCarBlock = document.querySelector('.addCar')
 const delCarBlock = document.querySelector('.delCar')
 const cngCarBlock = document.querySelector('.cngStatus')
+const searchCarBlock = document.querySelector('.searchCar')
+const cngRunBlock = document.querySelector('.cngRun')
+
 
 
 const tableList = document.querySelector('.tableList')
 
+const burger0 = document.querySelector('.burger0')
 const burger1 = document.querySelector('.burger1')
 const burger2 = document.querySelector('.burger2')
 const burger3 = document.querySelector('.burger3')
+const burger4 = document.querySelector('.burger4')
+
+
+
+const select = document.querySelector('#select')
 
 
 
@@ -138,6 +149,13 @@ burger3.addEventListener('click', function(){
    cngCarBlock.classList.toggle('flex')
 })
 
+burger0.addEventListener('click', function(){
+   searchCarBlock.classList.toggle('flex')
+})
+
+burger4.addEventListener('click', function(){
+   cngRunBlock.classList.toggle('flex')
+})
 
 
 
@@ -253,4 +271,133 @@ console.log('✌️statusCar --->', statusCar);
    table.remove()
    toLog(cars)
    
+})
+
+
+
+//! toPrice(Назва массиву)
+function toPrice(obj) {
+   const sortCar = obj.sort((a, b) => a.price - b.price)
+   console.log(sortCar);
+   toLog(sortCar)
+}
+
+// toPrice(carus)
+
+//! toProdaction(Назва массиву)
+function toProdaction(obj) {
+   const sortCar = obj.sort((a, b) => b.prodaction - a.prodaction)
+   console.log(sortCar);
+   toLog(sortCar)
+}
+// toProdaction(carus)
+
+//! toRun(Назва массиву)
+function toRun(obj) {
+   const sortCar = obj.sort((a, b) => a.run - b.run)
+   console.log(sortCar);
+   toLog(sortCar)
+}
+
+function toStatus(obj,i){
+   if(i === true){
+      const filterCar = obj.filter((item) => { return item.status === true || item.status === 'true'})
+      toLog(filterCar)
+   }else {
+      const filterCar = obj.filter((item) => { return item.status === false || item.status === 'false'})
+      toLog(filterCar)
+   }
+}
+
+select.addEventListener('change', ()=>{
+   const table = document.querySelector('table')
+   table.remove()
+   if(select.value === 'to-expens'){
+      toPrice(cars)
+   }else if(select.value === 'to-old'){
+      toProdaction(cars)
+   }else if(select.value === 'to-run'){
+      toRun(cars)
+   }else if(select.value === 'is-true'){
+      toStatus(cars,true)
+   }else if(select.value === 'is-false'){
+      toStatus(cars,false)
+   }else {
+      toLog(cars)
+   }
+})
+
+
+function searchCar(obj, name, model) {
+   const nameCar = obj.filter((item) => { return item.name === name })
+   const modelCar = obj.filter((item) => { return item.model === model })
+   if (nameCar.length == 1) {
+      toLog(nameCar)
+   } else if (nameCar.length > 1) {
+      if (model === undefined) {
+         toLog(nameCar)
+      } else if (modelCar.length == 0) {
+         toLog(nameCar)
+      } else {
+         toLog(modelCar)
+      }
+   } else {
+      console.log('no');
+   }
+}
+
+searchTheCar.addEventListener('click', ()=>{
+   const tableList = document.querySelector('.tableList')
+   const table = document.querySelector('table')
+
+   const nameCar = document.querySelector('.nameCar0').value
+   const modelCar = document.querySelector('.modelCar0').value
+
+
+   table.remove()
+   searchCar(cars,nameCar,modelCar)
+ 
+   
+})
+
+
+function changeRun(obj, newRun, name, model) {
+   obj.sort((a, b) => (a.name === b.name ? 0 : a.name < b.name ? -1 : 1));
+   const nameCar = obj.filter((item) => { return item.name === name })
+   const modelCar = obj.filter((item) => { return item.model === model })
+   if (nameCar.length == 1) {
+      const objKey = obj.findIndex(item => item.name === name)
+      objKey === -1 ? console.log('no') : obj[objKey].run = newRun
+   } else if (nameCar.length > 1) {
+      if (model === undefined) {
+         const objKey = obj.findIndex(item => item.name === name)
+         const objKeyLast = obj.findLastIndex(item => item.name === name)
+         for (i = 0; i <= objKeyLast; i++) {
+            objKey === -1 ? console.log('no') : obj[i].run = newRun
+         }
+      } else if (modelCar.length == 0) {
+         console.log('no');
+      } else {
+         const objKey = obj.findIndex(item => item.name === name && item.model === model)
+         objKey === -1 ? console.log('no') : obj[objKey].run = newRun
+      }
+   } else {
+      console.log('no');
+   }
+}
+
+
+
+
+cngTheRun.addEventListener('click', ()=>{
+   const tableList = document.querySelector('.tableList')
+   const table = document.querySelector('table')
+
+   const nameCar = document.querySelector('.nameCar4').value
+   const modelCar = document.querySelector('.modelCar4').value
+   const newRunCar = document.querySelector('.runCar4').value
+
+   table.remove()
+   changeRun(cars,newRunCar,nameCar,modelCar)
+   toLog(cars)
 })

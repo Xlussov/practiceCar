@@ -11,7 +11,7 @@ td,tr {
    background-color: #fcfcfc;
 }
 
-.addCar, .delCar, .cngStatus {
+.addCar, .delCar, .cngStatus, .searchCar, .cngRun {
    display: none;
    flex-direction: column;
    width: 200px;
@@ -23,7 +23,7 @@ td,tr {
 
 
 
-.burger1 p, .burger2 p, .burger3 p{
+.burger1 p, .burger2 p, .burger3 p, .burger0 p, .burger4 p{
    width: 196px;
    border: 1px solid black;
    height: 20px;
@@ -35,7 +35,8 @@ input {
    margin: 5px;
 }
 
-.addNewCar, .delTheCar, .cngTheStatus {
+
+.addNewCar, .delTheCar, .cngTheStatus, .searchTheCar, .cngTheRun{
    margin: 0 auto;
    width: 190px;
 }
@@ -44,11 +45,17 @@ input {
    display: flex;
 }
 
-
-.block1, .block2, .block3{
+.block1, .block2, .block3, .block0, .block4{
    margin-right: 20px;
+   margin-top: 20px;
 }
 
 .wraper {
    display: flex;
+   flex-wrap: wrap;
+   width: 800px;
+}
+
+.filter h3 {
+   margin: 0px;
 }
